@@ -48,7 +48,6 @@ public class UserServiceImpl implements IUserService {
 	@Override
 	public String signIn(User user) {
 			try {
-				System.out.println("INGRESEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
 			authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword()));
 			return jwtTokenProvider.createToken(user.getUsername(), userRepository.findByUsername(user.getUsername()).getRole());
 		} catch (AuthenticationException e) {

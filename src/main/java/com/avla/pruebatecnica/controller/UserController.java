@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -32,14 +33,14 @@ public class UserController {
 		return "Hola Mundo AVLA";
 	}
 	
-	@GetMapping("/signUp")
+	@PostMapping("/signUp")
 	@ResponseStatus(HttpStatus.CREATED)
 	public String signUp(@RequestBody User user) {
 		//System.out.println("se crea nuevo usuario "+user.getName());
 		return userService.signUp(user);
 	}
 	
-	@GetMapping("/signIn")
+	@PostMapping("/signIn")
 	public String signIn(@RequestBody User user) {
 		
 		return userService.signIn(user);
