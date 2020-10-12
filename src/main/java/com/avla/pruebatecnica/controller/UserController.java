@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.avla.pruebatecnica.model.User;
 import com.avla.pruebatecnica.service.IUserService;
 
+
 @RestController
 @CrossOrigin
 @RequestMapping("/api/v1")
@@ -20,6 +21,8 @@ public class UserController {
 	
 	@Autowired
 	IUserService userService;
+	
+
 	
 	// CONSTRUCTOR
 	@Autowired
@@ -42,7 +45,7 @@ public class UserController {
 	
 	@PostMapping("/signIn")
 	public String signIn(@RequestBody User user) {
-		
+		//System.out.println(user.getUsername());
 		return userService.signIn(user);
 	}
 

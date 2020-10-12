@@ -50,6 +50,7 @@ public class UserServiceImpl implements IUserService {
 			try {
 			authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword()));
 			return jwtTokenProvider.createToken(user.getUsername(), userRepository.findByUsername(user.getUsername()).getRole());
+			
 		} catch (AuthenticationException e) {
 			throw new RestServiceException("username o password invalido", HttpStatus.UNPROCESSABLE_ENTITY);
 		}
@@ -78,6 +79,18 @@ public class UserServiceImpl implements IUserService {
 		return org.springframework.security.core.userdetails.User//
 				.withUsername(username).password(user.getPassword()).authorities(user.getRole()).accountExpired(false)
 				.accountLocked(false).credentialsExpired(false).disabled(false).build();
+	}
+
+	@Override
+	public void addNewTask(Integer id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void assignTaskToUser(Integer id) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

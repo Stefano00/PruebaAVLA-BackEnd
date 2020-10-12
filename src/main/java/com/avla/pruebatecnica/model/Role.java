@@ -3,7 +3,7 @@ package com.avla.pruebatecnica.model;
 import org.springframework.security.core.GrantedAuthority;
 
 public enum Role implements GrantedAuthority {
-	USER1, USER2, USER3;
+	ADMIN, SUPERVISOR, VISIT;
 
 	@Override
 	public String getAuthority() {

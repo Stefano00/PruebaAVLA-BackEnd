@@ -26,4 +26,9 @@ public class Task {
 	private Integer duration_hours;
 	private String start_date;
 	private String end_date;	
+	private boolean mark;
+	private boolean process;
+	
+	
+	
 }
