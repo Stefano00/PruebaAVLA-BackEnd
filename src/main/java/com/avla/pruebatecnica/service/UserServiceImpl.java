@@ -17,7 +17,6 @@ import com.avla.pruebatecnica.exception.RestServiceException;
 import com.avla.pruebatecnica.model.User;
 import com.avla.pruebatecnica.repository.IUserRepository;
 
-
 @Service
 public class UserServiceImpl implements IUserService {
 
@@ -47,10 +46,12 @@ public class UserServiceImpl implements IUserService {
 
 	@Override
 	public String signIn(User user) {
-			try {
-			authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword()));
-			return jwtTokenProvider.createToken(user.getUsername(), userRepository.findByUsername(user.getUsername()).getRole());
-			
+		try {
+			authenticationManager
+					.authenticate(new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword()));
+			return jwtTokenProvider.createToken(user.getUsername(),
+					userRepository.findByUsername(user.getUsername()).getRole());
+
 		} catch (AuthenticationException e) {
 			throw new RestServiceException("username o password invalido", HttpStatus.UNPROCESSABLE_ENTITY);
 		}
@@ -60,37 +61,14 @@ public class UserServiceImpl implements IUserService {
 	public String signUp(User user) {
 		System.out.println("creando usuario ");
 		if (!userRepository.existsByUsername(user.getUsername())) {
-		user.setPassword(passwordEncoder.encode(user.getPassword()));
-		userRepository.save(user);
-		return jwtTokenProvider.createToken(user.getUsername(), user.getRole());
-		
-	} else {
+			user.setPassword(passwordEncoder.encode(user.getPassword()));
+			userRepository.save(user);
+			return jwtTokenProvider.createToken(user.getUsername(), user.getRole());
 
-		throw new RestServiceException("Username ya está en uso", HttpStatus.UNPROCESSABLE_ENTITY);
-	}
-	}
+		} else {
 
-	@Override
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		final User user = userRepository.findByUsername(username);
-		if (user == null) {
-			throw new UsernameNotFoundException("Usuario '" + username + "' noencontrado");
+			throw new RestServiceException("Username ya está en uso", HttpStatus.UNPROCESSABLE_ENTITY);
 		}
-		return org.springframework.security.core.userdetails.User//
-				.withUsername(username).password(user.getPassword()).authorities(user.getRole()).accountExpired(false)
-				.accountLocked(false).credentialsExpired(false).disabled(false).build();
-	}
-
-	@Override
-	public void addNewTask(Integer id) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void assignTaskToUser(Integer id) {
-		// TODO Auto-generated method stub
-		
 	}
 
 }

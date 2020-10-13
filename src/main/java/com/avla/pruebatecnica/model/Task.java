@@ -27,8 +27,6 @@ public class Task {
 	private String start_date;
 	private String end_date;	
 	private boolean mark;
-	private boolean process;
-	
-	
+	private boolean process;	
 	
 }

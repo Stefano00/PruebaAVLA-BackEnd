@@ -10,10 +10,7 @@ public interface IUserService {
 	List<User> findAll();
 	String signIn(User user);
 	String signUp(User user);
-	UserDetails loadUserByUsername(String username);
 	
-	void addNewTask(Integer id);
-	void assignTaskToUser(Integer id);
 	
 
 }

@@ -16,6 +16,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Component;
 
 import com.avla.pruebatecnica.exception.RestServiceException;
@@ -38,7 +39,7 @@ public class JwtTokenProvider {
 	private long validityInMilliseconds;
 	
 	@Autowired
-	private UserServiceImpl userService;
+	private UserDetailsService userService;
 
 	@PostConstruct
 	protected void init() {
