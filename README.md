@@ -31,6 +31,6 @@ iniciar sesión, nos devolverá un token que deberemos ingresar para poder ver n
 }
 ```
 
-## Luego con ese token, podemos ingresar a **localhost:8080/api/v1/home** mediante una petición GET sin argumentos y se debería ver nuestro "Hola mundo"
+## Luego con ese token, podemos ingresar a **localhost:5000/api/v1/home** mediante una petición GET sin argumentos y se debería ver nuestro "Hola mundo"
 
 ### Esto se hace para probar las configuraciones de Spring security y comenzar con la lógica del back-end.
