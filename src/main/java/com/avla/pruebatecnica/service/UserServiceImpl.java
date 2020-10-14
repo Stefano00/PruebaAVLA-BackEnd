@@ -7,14 +7,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.avla.pruebatecnica.config.JwtTokenProvider;
 import com.avla.pruebatecnica.exception.RestServiceException;
+import com.avla.pruebatecnica.model.Task;
 import com.avla.pruebatecnica.model.User;
+import com.avla.pruebatecnica.repository.ITaskRepository;
 import com.avla.pruebatecnica.repository.IUserRepository;
 
 @Service
@@ -22,6 +22,9 @@ public class UserServiceImpl implements IUserService {
 
 	@Autowired
 	IUserRepository userRepository;
+	
+	@Autowired
+	ITaskRepository taskRepository;
 
 	@Autowired
 	private PasswordEncoder passwordEncoder;
@@ -69,6 +72,18 @@ public class UserServiceImpl implements IUserService {
 
 			throw new RestServiceException("Username ya está en uso", HttpStatus.UNPROCESSABLE_ENTITY);
 		}
+	}
+
+	@Override
+	public void edit(User user) {
+		userRepository.save(user);
+	}
+
+	@Override
+	public List<Task> findTaskById(Integer id) {
+		
+		return userRepository.findById(id).get().getTasks();
+		
 	}
 
 }

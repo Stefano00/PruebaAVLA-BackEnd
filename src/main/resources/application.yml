@@ -2,5 +2,5 @@ security:
   jwt:
     token:
       secret-key: DLatam-Secret
-      expire-length: 3600000
+      expire-length: 3600000 #Una hora
 

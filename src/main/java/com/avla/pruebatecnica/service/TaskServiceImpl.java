@@ -44,4 +44,10 @@ public class TaskServiceImpl implements ITaskService {
 		taskRepository.save(task);	
 	}
 
+	@Override
+	public Task findById(Integer id) {
+				
+		return taskRepository.findById(id).get();
+	}
+
 }

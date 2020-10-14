@@ -11,4 +11,5 @@ public interface ITaskService {
 	void markTasks(Task task);
 	void deleteTask(Task task);
 	void editTask(Task task);
+	Task findById(Integer id);
 }
