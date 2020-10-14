@@ -22,7 +22,7 @@ public class UserDetailsServiceImpl implements UserDetailsService{
 			throw new UsernameNotFoundException("Usuario '" + username + "' noencontrado");
 		}
 		return org.springframework.security.core.userdetails.User//
-				.withUsername(username).password(user.getPassword()).authorities(user.getRole()).accountExpired(false)
+				.withUsername(username).password(user.getPassword()).authorities(user.getRoles()).accountExpired(false)
 				.accountLocked(false).credentialsExpired(false).disabled(false).build();
 	}
     

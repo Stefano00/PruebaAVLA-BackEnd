@@ -40,8 +40,8 @@ public class UserServiceImpl implements IUserService {
 
 	@Override
 	public List<User> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return (List<User>) userRepository.findAll();
 	}
 
 	@Override
@@ -50,7 +50,7 @@ public class UserServiceImpl implements IUserService {
 			authenticationManager
 					.authenticate(new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword()));
 			return jwtTokenProvider.createToken(user.getUsername(),
-					userRepository.findByUsername(user.getUsername()).getRole());
+					userRepository.findByUsername(user.getUsername()).getRoles());
 
 		} catch (AuthenticationException e) {
 			throw new RestServiceException("username o password invalido", HttpStatus.UNPROCESSABLE_ENTITY);
@@ -63,7 +63,7 @@ public class UserServiceImpl implements IUserService {
 		if (!userRepository.existsByUsername(user.getUsername())) {
 			user.setPassword(passwordEncoder.encode(user.getPassword()));
 			userRepository.save(user);
-			return jwtTokenProvider.createToken(user.getUsername(), user.getRole());
+			return jwtTokenProvider.createToken(user.getUsername(), user.getRoles());
 
 		} else {
 

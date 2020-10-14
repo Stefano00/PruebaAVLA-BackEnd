@@ -4,12 +4,17 @@ import java.util.List;
 
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -29,11 +34,11 @@ public class User {
 	private String username;
 	private String password;
 	private String email;
-	@ElementCollection(fetch = FetchType.EAGER)
-	private List<Role> role;
-	
-	@Transient
-	private List<Task> id_task;
+	//private List<Role> role;
+	@Enumerated(EnumType.STRING)
+	private Role roles;
+	@OneToMany(mappedBy = "users")
+	private List<Task> tasks;
 
 	
 }

@@ -1,7 +1,5 @@
 package com.avla.pruebatecnica.config;
 
-import javax.sql.DataSource;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -48,6 +46,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 		http.authorizeRequests().antMatchers("/api/v1/signIn").permitAll()
 		.antMatchers("/api/v1/signUp").permitAll()
+		/*.antMatchers("/**").hasRole("ADMIN")*/
 		.anyRequest().authenticated();
 		
 		 
