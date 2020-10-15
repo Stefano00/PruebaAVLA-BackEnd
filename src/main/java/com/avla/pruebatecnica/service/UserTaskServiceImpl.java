@@ -25,4 +25,11 @@ public class UserTaskServiceImpl implements IUserTaskService {
 
 	}
 
+	@Override
+	public UserTask findTaskById(Integer id) {
+		
+		return  userTaskRepository.findByIdTask(id);
+		
+	}
+
 }

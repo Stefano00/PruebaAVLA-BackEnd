@@ -1,5 +1,6 @@
 package com.avla.pruebatecnica.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,8 +23,10 @@ public class UserTask {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	private Integer id_user;
-	private Integer id_task;
+	@Column(name="id_user")
+	private Integer idUser;
+	@Column(name="id_task")
+	private Integer idTask;
 
 }
 
