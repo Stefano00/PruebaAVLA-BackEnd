@@ -29,19 +29,22 @@ public class TaskServiceImpl implements ITaskService {
 	}
 
 	@Override
-	public void deleteTask(Integer id) {
-		taskRepository.deleteById(id);	
+	public void deleteTask(Task task) {
+		taskRepository.delete(task);
 	}
 
 	@Override
 	public void editTask(Task task) {
+		if(!(task.getId()==null)) {
+			taskRepository.save(task);	
+		}
 		
-		taskRepository.save(task);
 	}
 
 	@Override
 	public void createTask(Task task) {
-		taskRepository.save(task);	
+		taskRepository.save(task);
+		
 	}
 
 	@Override

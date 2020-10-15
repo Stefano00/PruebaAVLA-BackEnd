@@ -40,8 +40,9 @@ public class Task {
 	            joinColumns = @JoinColumn(name = "id_task", nullable = false),
 	            inverseJoinColumns = @JoinColumn(name="id_user", nullable = false)
 	        )
-	    @ManyToOne(cascade = CascadeType.ALL)
+	    @ManyToOne
 	    @JsonIgnore //ignora el bucle infinito
+	    
 	private User users;
 	/*@ManyToOne
 	@JoinColumn(name="id_user")

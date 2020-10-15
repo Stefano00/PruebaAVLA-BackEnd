@@ -43,10 +43,10 @@ public class TaskController {
 		taskService.markTasks(task);
 	}
 	
-	@PostMapping("/delete/{id}")
+	@PostMapping("/delete")
 	@ResponseStatus(HttpStatus.OK)
-	public void deleteTask(@PathVariable("id") Integer id) {
-		taskService.deleteTask(id);
+	public void deleteTask(@RequestBody Task task) {
+		taskService.deleteTask(task);
 	}
 	
 	@PostMapping("/edit")

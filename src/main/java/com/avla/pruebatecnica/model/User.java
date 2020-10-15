@@ -39,7 +39,7 @@ public class User {
 	//private List<Role> role;
 	@Enumerated(EnumType.STRING)
 	private Role roles;
-	@OneToMany(mappedBy = "users", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "users")
 	private List<Task> tasks;
 
 	
