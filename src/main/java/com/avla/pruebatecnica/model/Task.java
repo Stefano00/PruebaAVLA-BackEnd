@@ -48,5 +48,14 @@ public class Task {
 	@JsonIgnore
 	
 	private User users;*/
+
+	@Override
+	public String toString() {
+		return "Task [id=" + id + ", task_name=" + task_name + ", task_type=" + task_type + ", description="
+				+ description + ", duration_hours=" + duration_hours + ", start_date=" + start_date + ", end_date="
+				+ end_date + ", mark=" + mark + ", process=" + process +"]";
+	}
+	  
+	  
 	
 }

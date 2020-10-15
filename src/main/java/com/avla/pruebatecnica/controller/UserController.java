@@ -1,6 +1,7 @@
 package com.avla.pruebatecnica.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -37,5 +38,28 @@ public class UserController {
 	@GetMapping("/taskById/{id}")
 	public List<Task> findTaskById(@PathVariable("id") Integer id){
 		return userService.findTaskById(id);
+	}
+	
+	@PostMapping("/delete/{id}")
+	public void delete(@PathVariable("id") Integer id) {
+		userService.delete(id);		
+	}
+	
+	@GetMapping("/userTask")
+	public Map<Integer, Task> userTask(){
+		
+		return userService.userTask();
+	}
+	
+	@GetMapping("/cantUserTask")
+	public Map<Integer, Integer> cantUserTask(){
+		
+		return userService.cantUserTask();
+	}
+	
+	@GetMapping("/taskUserId")
+	public Map<Integer, String> taskUserId(){
+		
+		return userService.taskUserId();
 	}
 }

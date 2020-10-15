@@ -29,8 +29,8 @@ public class TaskServiceImpl implements ITaskService {
 	}
 
 	@Override
-	public void deleteTask(Task task) {
-		taskRepository.deleteById(task.getId());	
+	public void deleteTask(Integer id) {
+		taskRepository.deleteById(id);	
 	}
 
 	@Override
@@ -46,8 +46,13 @@ public class TaskServiceImpl implements ITaskService {
 
 	@Override
 	public Task findById(Integer id) {
-				
-		return taskRepository.findById(id).get();
+		try {
+			return taskRepository.findById(id).get();
+		}catch(Exception e) {
+			System.out.println("Error: " + e);
+			return null;
+		}
+		
 	}
 
 }

@@ -1,9 +1,9 @@
 package com.avla.pruebatecnica.controller;
 
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.avla.pruebatecnica.model.Role;
 import com.avla.pruebatecnica.model.User;
 import com.avla.pruebatecnica.service.IUserService;
 
@@ -40,8 +41,8 @@ public class LoginController {
 	
 	@PostMapping("/signUp")
 	@ResponseStatus(HttpStatus.CREATED)
-	public String signUp(@RequestBody User user) {
-		//System.out.println("se crea nuevo usuario "+user.getName());
+	public String signUp(@RequestBody User user, Model model) {
+		model.addAttribute("roles", Role.values());
 		return userService.signUp(user);
 	}
 	

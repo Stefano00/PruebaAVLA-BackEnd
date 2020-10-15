@@ -9,7 +9,7 @@ public interface ITaskService {
 	List<Task> findAll();
 	void createTask(Task task);
 	void markTasks(Task task);
-	void deleteTask(Task task);
+	void deleteTask(Integer id);
 	void editTask(Task task);
 	Task findById(Integer id);
 }
