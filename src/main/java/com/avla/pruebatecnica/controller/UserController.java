@@ -40,6 +40,11 @@ public class UserController {
 		return userService.findTaskById(id);
 	}
 	
+	/*@PostMapping("/delete/{id}")
+	public void delete(@PathVariable("id") Integer id) {
+		userService.delete(id);		
+	}*/
+	
 	@PostMapping("/delete/{id}")
 	public void delete(@PathVariable("id") Integer id) {
 		userService.delete(id);		

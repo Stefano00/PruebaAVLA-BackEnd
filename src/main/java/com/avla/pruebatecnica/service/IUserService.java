@@ -14,8 +14,8 @@ public interface IUserService {
 	String signUp(User user);
 	void edit (User user);
 	List<Task> findTaskById(Integer id);
-	void delete(Integer id);
 	Map<Integer, Task> userTask();
 	Map<Integer, Integer> cantUserTask();
 	Map<Integer, String> taskUserId();
+	void delete(Integer id);
 }
