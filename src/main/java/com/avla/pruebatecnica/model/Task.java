@@ -35,14 +35,14 @@ public class Task {
 	private boolean mark;
 	private boolean process;
 	
-	  @JoinTable(
+	 @JoinTable(
 	            name = "users_tasks",
 	            joinColumns = @JoinColumn(name = "id_task", nullable = false),
 	            inverseJoinColumns = @JoinColumn(name="id_user", nullable = false)
 	        )
-	    @ManyToOne
+	  
+	    @ManyToOne(cascade = CascadeType.ALL)
 	    @JsonIgnore //ignora el bucle infinito
-	    
 	private User users;
 	/*@ManyToOne
 	@JoinColumn(name="id_user")

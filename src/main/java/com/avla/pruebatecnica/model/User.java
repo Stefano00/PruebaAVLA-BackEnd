@@ -12,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
@@ -39,7 +40,9 @@ public class User {
 	//private List<Role> role;
 	@Enumerated(EnumType.STRING)
 	private Role roles;
-	@OneToMany(mappedBy = "users")
+	
+	@OneToMany(mappedBy = "users", cascade = CascadeType.ALL)
+	
 	private List<Task> tasks;
 
 	
