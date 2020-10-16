@@ -28,7 +28,7 @@ public class UserTaskServiceImpl implements IUserTaskService {
 	public void create(UserTask userTask) {  //logica de agregado de tarea a usuario
 		if(!(userTask.getIdUser()==null) && !(userTask.getIdUser()==0)  ) {
 			userTaskRepository.save(userTask);
-		}/*else {
+		}else {
 			
 			Map<Integer, Integer> contUser = new HashMap<Integer, Integer>();
 			Map<Integer, Integer> contUserInv = new HashMap<Integer, Integer>();
@@ -57,8 +57,10 @@ public class UserTaskServiceImpl implements IUserTaskService {
 			System.out.println(minValue);
 			System.out.println(contUserInv.get(minValue));
 			
+			userTask.setIdUser(contUserInv.get(minValue));
+			userTaskRepository.save(userTask);
 			
-		}*/
+		}
 		
 
 	}

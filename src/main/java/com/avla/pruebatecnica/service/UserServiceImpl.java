@@ -147,4 +147,10 @@ public class UserServiceImpl implements IUserService {
 		return userTask;
 	}
 
+	@Override
+	public User findById(Integer id) {
+
+		return userRepository.findById(id).orElse(null);
+	}
+
 }

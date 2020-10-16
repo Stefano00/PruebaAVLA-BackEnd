@@ -62,4 +62,10 @@ public class UserController {
 		
 		return userService.taskUserId();
 	}
+	
+	@GetMapping("/{id}")
+	public User findById(@PathVariable("id") Integer id) {
+		
+		return userService.findById(id);
+	}
 }
